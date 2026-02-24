@@ -434,15 +434,15 @@ footer {
     }
     
     .burger-menu {
-        display: flex !important;
+        display: flex;
     }
     
     nav ul {
-        display: none !important;
+        display: none;
     }
     
     nav.open ul {
-        display: flex !important;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -484,7 +484,7 @@ footer {
     }
     
     .nav-overlay.active {
-        display: block !important;
+        display: block;
     }
     
     .hero h1 {
@@ -507,6 +507,78 @@ footer {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
+    }
+
+    /* Исправления для контента на мобильных */
+    .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        text-align: center;
+    }
+    .schedule-item > * {
+        white-space: normal;
+        overflow: visible;
+    }
+    .schedule-item:hover {
+        transform: none;
+    }
+    .schedule-time {
+        font-size: 1.1rem;
+        width: auto;
+    }
+    .schedule-room {
+        width: fit-content;
+        margin: 0 auto;
+    }
+    .days-tabs {
+        gap: 10px;
+    }
+    .day-tab {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Исправления для about.html */
+    .history-image {
+        height: 250px;
+        margin-top: 30px;
+    }
+    .value-item {
+        padding: 30px 20px;
+    }
+    .teacher-card {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    /* Исправления для programs.html */
+    .program-item {
+        max-width: 100%;
+    }
+    .dance-block {
+        padding: 25px 15px;
+    }
+    .dance-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    
+    /* Исправления для contacts.html */
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-map-grid {
+        grid-template-columns: 1fr;
+    }
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+    .faq-section {
+        padding: 30px;
+    }
+    .faq-question h3 {
+        font-size: 1rem;
     }
 }
 

@@ -319,7 +319,7 @@
             font-size: 0.95rem;
         }
 
-        /* АДАПТАЦИЯ */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 1024px) {
             .contacts-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -334,8 +334,149 @@
             .contacts-hero h1 {
                 font-size: 2.5rem;
             }
+            
+            .contacts-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            
+            .contacts-content {
+                padding: 40px 15px;
+            }
+            
+            .contacts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            
+            .contact-card {
+                padding: 25px;
+            }
+            
+            .contact-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .form-map-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .form-block {
+                padding: 25px;
+            }
+            
+            .form-block h2 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .form-block h2:after {
+                margin: 1rem auto 0;
+            }
+            
+            .map-block {
+                padding: 25px;
+            }
+            
+            .map-block h2 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .map-block h2:after {
+                margin: 1rem auto 0;
+            }
+            
+            .faq-section {
+                padding: 30px 20px;
+                margin-bottom: 40px;
+            }
+            
+            .faq-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+                display: block;
+                text-align: center;
+            }
+            
+            .faq-section h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .faq-question {
+                padding: 20px 15px;
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+            
+            .faq-icon {
+                width: 25px;
+                height: 25px;
+                font-size: 1rem;
+            }
+            
+            .faq-toggle {
+                font-size: 1.5rem;
+            }
+            
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+            
+            .map-address {
+                font-size: 0.95rem;
+            }
+            
+            .map-address p {
+                margin-bottom: 8px;
+            }
+        }
 
-            /* Стили для мобильной версии будут подхвачены из общего style.css */
+        @media (max-width: 480px) {
+            .contacts-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-icon {
+                font-size: 2rem;
+            }
+            
+            .contact-card p {
+                font-size: 0.9rem;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .form-btn {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .faq-question {
+                padding: 15px 12px;
+            }
+            
+            .faq-question h3 {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -370,200 +511,4 @@
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Адрес</h3>
-                <p>г. Москва, ул. Танцевальная, д. 5</p>
-                <p>м. Тверская, 5 минут пешком</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📞</div>
-                <h3>Телефон</h3>
-                <p>+7 (495) 123-45-67</p>
-                <p>Ежедневно с 10:00 до 22:00</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">✉️</div>
-                <h3>Эл. Почта</h3>
-                <p>info@gracia-dance.ru</p>
-                <p>Ответим в течение 24 часов</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">⏰</div>
-                <h3>Режим работы</h3>
-                <p>Пн-Пт: 10:00 - 22:00</p>
-                <p>Сб-Вс: 10:00 - 20:00</p>
-            </div>
-        </div>
-
-        <!-- ФОРМА И КАРТА -->
-        <div class="form-map-grid">
-            <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
-            <div class="form-block">
-                <h2>Записаться на пробное занятие</h2>
-                <form action="php/send.php" method="post">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Ваше имя *" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Телефон *" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <select name="program">
-                            <option value="">Выберите программу</option>
-                            <option value="Детская 4-7">Детская группа (4-7 лет)</option>
-                            <option value="Младшая 8-12">Младшая группа (8-12 лет)</option>
-                            <option value="Средняя 13-16">Средняя группа (13-16 лет)</option>
-                            <option value="Взрослая">Взрослая группа</option>
-                            <option value="Свадебный">Свадебный танец</option>
-                            <option value="Индивидуальные">Индивидуальные занятия</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Расскажите о своих пожеланиях и вопросах..."></textarea>
-                    </div>
-                    <button type="submit" class="form-btn">Отправить заявку</button>
-                    <div class="form-note">* Обязательные поля. Мы свяжемся с вами в течение 24 часов.</div>
-                </form>
-            </div>
-
-            <!-- КАРТА -->
-            <div class="map-block">
-                <h2>Как нас найти</h2>
-                <div style="position:relative;overflow:hidden;border-radius:15px;height:300px;">
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.614587%2C55.760205&z=17&pt=37.614587%2C55.760205&mode=search&text=Москва%2C+улица+Тверская" 
-                            width="100%" 
-                            height="300" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            style="position:relative;border-radius:15px;">
-                    </iframe>
-                </div>
-                <div class="map-address">
-                    <p><strong>🚇 Как добраться:</strong></p>
-                    <p>• От метро Тверская: выход №2, по ул. Тверской 200 метров, поворот направо на ул. Танцевальную</p>
-                    <p>• На автомобиле: есть бесплатная парковка для наших учеников</p>
-                    <p>• На автобусе: остановка «Тверская площадь», автобусы №15, 27, 101</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ ПРЕМИУМ -->
-        <div class="faq-section">
-            <h2>Часто задаваемые вопросы</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span class="faq-icon">?</span>
-                        <h3>Нужна ли специальная подготовка для начала занятий?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Нет, мы принимаем учеников любого уровня подготовки. Наши преподаватели подберут программу индивидуально для вас. Даже если вы никогда не танцевали — вы в надежных руках!</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span class="faq-icon">?</span>
-                        <h3>Нужен ли партнер для занятий?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Не обязательно. Мы поможем подобрать партнера для занятий, если у вас его нет. У нас много сольных танцоров, которые ищут пару!</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span class="faq-icon">?</span>
-                        <h3>Какая форма одежды нужна?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Для первого занятия подойдет любая удобная спортивная одежда и обувь на мягкой подошве (чешки, балетки, просто носки). Позже мы порекомендуем специальную танцевальную обувь.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span class="faq-icon">?</span>
-                        <h3>Сколько времени нужно, чтобы научиться танцевать?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Базовые навыки можно освоить за 2-3 месяца регулярных тренировок. Для уверенного танца на паркете нужно около года. Но главное — регулярность и удовольствие от процесса!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ПОДВАЛ (скопирован с index.html для единообразия) -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>Школа бальных танцев «Грация»</h3>
-                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
-            </div>
-            <div class="footer-contacts">
-                <h4>Контакты</h4>
-                <p>Телефон: +7 (495) 123-45-67</p>
-                <p>Email: info@gracia-dance.ru</p>
-                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
-            </div>
-            <div class="footer-schedule">
-                <h4>Режим работы</h4>
-                <p>Пн-Пт: 10:00 - 22:00</p>
-                <p>Сб-Вс: 10:00 - 20:00</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script>
-        // FAQ аккордеон
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-            });
-        });
-    </script>
-    <script>
-    // Мобильное меню
-    const burger = document.querySelector('.burger-menu');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.nav-overlay');
-
-    if (burger && nav && overlay) {
-        burger.addEventListener('click', function() {
-            burger.classList.toggle('active');
-            nav.classList.toggle('open');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-        });
-
-        overlay.addEventListener('click', function() {
-            burger.classList.remove('active');
-            nav.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (nav.classList.contains('open')) {
-                    burger.classList.remove('active');
-                    nav.classList.remove('open');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-    }
-</script>
-</body>
-</html>
+                <p

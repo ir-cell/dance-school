@@ -276,27 +276,120 @@
             color: white;
         }
 
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 768px) {
             .programs-hero h1 {
                 font-size: 2.5rem;
+            }
+            
+            .programs-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
             }
             
             .programs-content {
                 padding: 40px 15px;
             }
             
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+            
             .program-item {
-                max-width: 100%;
+                padding: 30px 20px;
+            }
+            
+            .program-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            .program-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .program-details span {
+                width: 100%;
+            }
+            
+            .program-price {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            
+            .dance-section {
+                padding: 40px 15px;
+            }
+            
+            .dance-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .dance-block {
                 padding: 25px 15px;
             }
             
+            .dance-block h3 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+            
             .dance-list li {
                 flex-direction: column;
                 text-align: center;
                 gap: 5px;
+                padding: 10px 0;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+                margin: 40px 15px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section p {
+                font-size: 1rem;
+            }
+            
+            .cta-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .programs-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .program-icon {
+                font-size: 2.5rem;
+            }
+            
+            .program-item .age {
+                font-size: 0.8rem;
+                padding: 4px 12px;
+            }
+            
+            .dance-block {
+                padding: 20px 12px;
+            }
+            
+            .dance-name {
+                font-size: 1rem;
+            }
+            
+            .dance-desc {
+                font-size: 0.9rem;
             }
         }
     </style>

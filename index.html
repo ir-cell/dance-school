@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа бальных танцев «Грация»</title>
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ШАПКА САЙТА (ТЕПЕРЬ ССЫЛКИ НА СТРАНИЦЫ) -->
+    <header>
+        <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="programs.html">Программы</a></li>
+                <li><a href="schedule.html">Расписание</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+<section id="main" class="hero">
+    <h1>Школа бальных танцев «Грация»</h1>
+    <p class="subtitle">Откройте для себя мир элегантности и грации</p>
+    <div class="hero-buttons">
+        <a href="programs.html" class="button">Наши программы</a>
+        <a href="contacts.html" class="button button-outline">Записаться на пробное занятие</a>
+    </div>
+</section>
+
+    <!-- БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" (ПРЕИМУЩЕСТВА) -->
+    <section id="about">
+        <h2>Почему выбирают нас</h2>
+        <div class="advantages-grid">
+            <div class="advantage-item">
+                <h3>15+ лет опыта</h3>
+                <p>Наша школа работает с 2010 года и подготовила сотни чемпионов</p>
+            </div>
+            <div class="advantage-item">
+                <h3>Профессиональные тренеры</h3>
+                <p>Мастера спорта и заслуженные тренеры России</p>
+            </div>
+            <div class="advantage-item">
+                <h3>Удобное расписание</h3>
+                <p>Занятия 7 дней в неделю в удобное для вас время</p>
+            </div>
+            <div class="advantage-item">
+                <h3>Индивидуальный подход</h3>
+                <p>Программы для всех уровней подготовки</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "НАПРАВЛЕНИЯ ОБУЧЕНИЯ" -->
+    <section id="programs">
+        <h2>Направления обучения</h2>
+        <div class="programs-grid">
+            <!-- Европейская программа -->
+            <div class="program-card">
+                <h3>Европейская программа</h3>
+                <p>Медленный вальс, танго, венский вальс, медленный фокстрот, квикстеп</p>
+                <a href="programs.html" class="button-small">Узнать больше</a>
+            </div>
+            <!-- Латиноамериканская программа -->
+            <div class="program-card">
+                <h3>Латиноамериканская программа</h3>
+                <p>Самба, ча-ча-ча, румба, пасодобль, джайв</p>
+                <a href="programs.html" class="button-small">Узнать больше</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="programs.html" class="button">Все программы</a>
+        </div>
+    </section>
+
+    <!-- БЛОК С ПРИЗЫВОМ (ПРОБНОЕ ЗАНЯТИЕ) -->
+    <section id="trial" class="cta-section">
+        <h2>Начните свой путь в мире танца</h2>
+        <p>Первое пробное занятие – бесплатно! Приходите и почувствуйте магию бальных танцев</p>
+        <a href="contacts.html" class="button">Записаться на пробное занятие</a>
+    </section>
+
+    <!-- ПОДВАЛ САЙТА (ФУТЕР) -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Школа бальных танцев «Грация»</h3>
+                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
+            </div>
+            
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@gracia-dance.ru</p>
+                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
+            </div>
+            
+            <div class="footer-schedule">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+    // Мобильное меню
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    if (burger && nav && overlay) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            nav.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            nav.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (nav.classList.contains('open')) {
+                    burger.classList.remove('active');
+                    nav.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>

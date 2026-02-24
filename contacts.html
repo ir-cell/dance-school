@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Грация</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ГЕРОЙ */
+        .contacts-hero {
+            height: 30vh;
+            background: #2C1810;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+        
+        .contacts-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .contacts-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .contacts-content {
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* КОНТАКТНАЯ ИНФОРМАЦИЯ */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #C6A43F;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(139, 30, 63, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: #8B1E3F;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        /* ФОРМА И КАРТА */
+        .form-map-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .form-block {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .form-block h2 {
+            font-size: 2rem;
+            color: #8B1E3F;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .form-block h2:after {
+            margin: 1rem 0 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 15px;
+            background: #8B1E3F;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #8B1E3F;
+        }
+
+        .form-btn:hover {
+            background: transparent;
+            color: #8B1E3F;
+        }
+
+        .form-note {
+            margin-top: 15px;
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .map-block {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .map-block h2 {
+            font-size: 2rem;
+            color: #8B1E3F;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .map-block h2:after {
+            margin: 1rem 0 0;
+        }
+
+        .map-address {
+            color: #666;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .map-address strong {
+            color: #8B1E3F;
+        }
+
+        /* FAQ ПРЕМИУМ */
+        .faq-section {
+            background: linear-gradient(135deg, #F9F6F2 0%, #fff 100%);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(139, 30, 63, 0.1);
+            border: 1px solid rgba(198, 164, 63, 0.2);
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            color: #8B1E3F;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .faq-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #C6A43F;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(198, 164, 63, 0.1);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 15px 30px rgba(139, 30, 63, 0.15);
+            transform: translateY(-5px);
+            border-color: #C6A43F;
+        }
+
+        .faq-question {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            position: relative;
+            background: white;
+        }
+
+        .faq-icon {
+            width: 30px;
+            height: 30px;
+            background: #8B1E3F;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover .faq-icon {
+            background: #C6A43F;
+            transform: rotate(360deg);
+        }
+
+        .faq-question h3 {
+            flex: 1;
+            font-size: 1.1rem;
+            color: #2C1810;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            font-size: 1.8rem;
+            color: #C6A43F;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            width: 30px;
+            text-align: center;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+            color: #8B1E3F;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #F9F6F2;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* АДАПТАЦИЯ */
+        @media (max-width: 1024px) {
+            .contacts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contacts-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-map-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-section {
+                padding: 30px;
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="programs.html">Программы</a></li>
+                <li><a href="schedule.html">Расписание</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contacts-hero">
+        <h1>Контакты</h1>
+        <p>Свяжитесь с нами удобным для вас способом</p>
+    </section>
+
+    <div class="contacts-content">
+        <!-- КОНТАКТНАЯ ИНФОРМАЦИЯ -->
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Адрес</h3>
+                <p>г. Москва, ул. Танцевальная, д. 5</p>
+                <p>м. Тверская, 5 минут пешком</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Телефон</h3>
+                <p>+7 (495) 123-45-67</p>
+                <p>Ежедневно с 10:00 до 22:00</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Эл. Почта</h3>
+                <p>info@gracia-dance.ru</p>
+                <p>Ответим в течение 24 часов</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">⏰</div>
+                <h3>Режим работы</h3>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+        </div>
+
+        <!-- ФОРМА И КАРТА -->
+        <div class="form-map-grid">
+            <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+            <div class="form-block">
+                <h2>Записаться на пробное занятие</h2>
+                <form action="php/send.php" method="post">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Телефон *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <select name="program">
+                            <option value="">Выберите программу</option>
+                            <option value="Детская 4-7">Детская группа (4-7 лет)</option>
+                            <option value="Младшая 8-12">Младшая группа (8-12 лет)</option>
+                            <option value="Средняя 13-16">Средняя группа (13-16 лет)</option>
+                            <option value="Взрослая">Взрослая группа</option>
+                            <option value="Свадебный">Свадебный танец</option>
+                            <option value="Индивидуальные">Индивидуальные занятия</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Расскажите о своих пожеланиях и вопросах..."></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Отправить заявку</button>
+                    <div class="form-note">* Обязательные поля. Мы свяжемся с вами в течение 24 часов.</div>
+                </form>
+            </div>
+
+            <!-- КАРТА -->
+            <div class="map-block">
+                <h2>Как нас найти</h2>
+                <div style="position:relative;overflow:hidden;border-radius:15px;height:300px;">
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.614587%2C55.760205&z=17&pt=37.614587%2C55.760205&mode=search&text=Москва%2C+улица+Тверская" 
+                            width="100%" 
+                            height="300" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            style="position:relative;border-radius:15px;">
+                    </iframe>
+                </div>
+                <div class="map-address">
+                    <p><strong>🚇 Как добраться:</strong></p>
+                    <p>• От метро Тверская: выход №2, по ул. Тверской 200 метров, поворот направо на ул. Танцевальную</p>
+                    <p>• На автомобиле: есть бесплатная парковка для наших учеников</p>
+                    <p>• На автобусе: остановка «Тверская площадь», автобусы №15, 27, 101</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ ПРЕМИУМ -->
+        <div class="faq-section">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Нужна ли специальная подготовка для начала занятий?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Нет, мы принимаем учеников любого уровня подготовки. Наши преподаватели подберут программу индивидуально для вас. Даже если вы никогда не танцевали — вы в надежных руках!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Нужен ли партнер для занятий?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Не обязательно. Мы поможем подобрать партнера для занятий, если у вас его нет. У нас много сольных танцоров, которые ищут пару!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Какая форма одежды нужна?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для первого занятия подойдет любая удобная спортивная одежда и обувь на мягкой подошве (чешки, балетки, просто носки). Позже мы порекомендуем специальную танцевальную обувь.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Сколько времени нужно, чтобы научиться танцевать?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Базовые навыки можно освоить за 2-3 месяца регулярных тренировок. Для уверенного танца на паркете нужно около года. Но главное — регулярность и удовольствие от процесса!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Школа бальных танцев «Грация»</h3>
+                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@gracia-dance.ru</p>
+                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
+            </div>
+            <div class="footer-schedule">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ аккордеон
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+    <script>
+    // Мобильное меню
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    if (burger && nav && overlay) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            nav.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            nav.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (nav.classList.contains('open')) {
+                    burger.classList.remove('active');
+                    nav.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>

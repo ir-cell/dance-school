@@ -5,6 +5,344 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О школе | Грация</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ О НАС */
+        
+        /* ИСТОРИЯ С КАРТИНКОЙ */
+        .history-section {
+            padding: 120px 5% 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .history-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2C1810;
+            text-align: left;
+        }
+        
+        .history-content h2:after {
+            margin: 1rem 0 0;
+        }
+        
+        .history-subtitle {
+            font-size: 1.2rem;
+            color: #8B1E3F;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .history-content p {
+            margin-bottom: 15px;
+        }
+        
+        .history-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(139,30,63,0.3);
+        }
+
+        /* ЦЕННОСТИ */
+        .values-section {
+            padding: 80px 5%;
+            background: #F9F6F2;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .values-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: #8B1E3F;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .value-item h3 {
+            color: #8B1E3F;
+            margin-bottom: 15px;
+        }
+        
+        .value-item p {
+            color: #666;
+        }
+
+        /* ПРЕПОДАВАТЕЛИ */
+        .teachers-section {
+            padding: 80px 5%;
+            background: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .teachers-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .teachers-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #666;
+        }
+        
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .teacher-card {
+            background: #F9F6F2;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .teacher-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .teacher-info {
+            padding: 20px;
+        }
+        
+        .teacher-info h3 {
+            color: #8B1E3F;
+            margin-bottom: 5px;
+        }
+        
+        .teacher-title {
+            color: #C6A43F;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .teacher-specialty {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .teacher-experience {
+            color: #999;
+        }
+
+        /* СТАТИСТИКА */
+        .stats-section {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, #8B1E3F 0%, #62162c 100%);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            color: #C6A43F;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+        }
+
+        /* АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ */
+        @media (max-width: 1100px) {
+            .teachers-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .teacher-photo {
+                height: 250px;
+            }
+            
+            .teacher-info {
+                padding: 15px;
+            }
+            
+            .teacher-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .teacher-title {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .teachers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                max-width: 600px;
+            }
+            
+            .teacher-photo {
+                height: 280px;
+            }
+        }
+
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 768px) {
+            .history-section {
+                padding: 100px 5% 40px;
+            }
+            
+            .history-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .history-content h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+            
+            .history-content h2:after {
+                margin: 1rem auto 0;
+            }
+            
+            .history-subtitle {
+                text-align: center;
+            }
+            
+            .history-image {
+                height: 250px;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .value-item {
+                padding: 30px 20px;
+            }
+            
+            .value-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                max-width: 400px;
+            }
+            
+            .teacher-card {
+                max-width: 100%;
+            }
+            
+            .teacher-photo {
+                height: 300px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .stat-label {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .history-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .history-subtitle {
+                font-size: 1rem;
+            }
+            
+            .teachers-title {
+                font-size: 2rem;
+            }
+            
+            .teacher-photo {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,143 +365,144 @@
     </header>
 
     <!-- ИСТОРИЯ С КАРТИНКОЙ -->
-    <div style="padding: 120px 5% 50px; max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
-            <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #2C1810;">О нашей школе</h2>
-                <p style="font-size: 1.2rem; color: #8B1E3F; font-weight: 600; margin-bottom: 20px;">15 лет профессионального обучения бальным танцам</p>
-                <p style="margin-bottom: 15px;"><strong>Наша история</strong></p>
-                <p style="margin-bottom: 15px;">Школа бальных танцев «Грация» была основана в 2010 году группой профессиональных танцоров и тренеров с целью популяризации бальных танцев в России и подготовки спортсменов высокого уровня.</p>
-                <p style="margin-bottom: 15px;">За 15 лет работы мы подготовили более 500 танцоров, многие из которых стали чемпионами России и призерами международных соревнований. Наша школа известна индивидуальным подходом к каждому ученику и профессиональной командой преподавателей.</p>
+    <div class="history-section">
+        <div class="history-grid">
+            <div class="history-content">
+                <h2>О нашей школе</h2>
+                <div class="history-subtitle">15 лет профессионального обучения бальным танцам</div>
+                <p><strong>Наша история</strong></p>
+                <p>Школа бальных танцев «Грация» была основана в 2010 году группой профессиональных танцоров и тренеров с целью популяризации бальных танцев в России и подготовки спортсменов высокого уровня.</p>
+                <p>За 15 лет работы мы подготовили более 500 танцоров, многие из которых стали чемпионами России и призерами международных соревнований. Наша школа известна индивидуальным подходом к каждому ученику и профессиональной командой преподавателей.</p>
                 <p>Мы принимаем учеников всех возрастов – от детей 4 лет до взрослых, которые хотят освоить искусство бальных танцев или улучшить свои навыки.</p>
             </div>
             <div>
-                <img src="images/history-school.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 20px 40px rgba(139,30,63,0.3);">
+                <img src="images/history-school.jpg" class="history-image" alt="История школы">
             </div>
         </div>
     </div>
 
     <!-- ЦЕННОСТИ -->
-    <div style="padding: 80px 5%; background: #F9F6F2;">
-        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Наши ценности</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-            <div style="text-align: center; padding: 40px 30px; background: white; border-radius: 15px;">
-                <div style="width: 80px; height: 80px; background: #8B1E3F; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">❤️</div>
-                <h3 style="color: #8B1E3F; margin-bottom: 15px;">Любовь к танцу</h3>
-                <p style="color: #666;">Мы прививаем искреннюю любовь к искусству танца и вдохновляем наших учеников</p>
+    <div class="values-section">
+        <h2 class="values-title">Наши ценности</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">❤️</div>
+                <h3>Любовь к танцу</h3>
+                <p>Мы прививаем искреннюю любовь к искусству танца и вдохновляем наших учеников</p>
             </div>
-            <div style="text-align: center; padding: 40px 30px; background: white; border-radius: 15px;">
-                <div style="width: 80px; height: 80px; background: #8B1E3F; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">⭐</div>
-                <h3 style="color: #8B1E3F; margin-bottom: 15px;">Профессионализм</h3>
-                <p style="color: #666;">Наши тренеры – настоящие профессионалы с богатым опытом и достижениями</p>
+            <div class="value-item">
+                <div class="value-icon">⭐</div>
+                <h3>Профессионализм</h3>
+                <p>Наши тренеры – настоящие профессионалы с богатым опытом и достижениями</p>
             </div>
-            <div style="text-align: center; padding: 40px 30px; background: white; border-radius: 15px;">
-                <div style="width: 80px; height: 80px; background: #8B1E3F; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">🎯</div>
-                <h3 style="color: #8B1E3F; margin-bottom: 15px;">Целеустремленность</h3>
-                <p style="color: #666;">Мы помогаем нашим ученикам достигать поставленных целей и превосходить их</p>
+            <div class="value-item">
+                <div class="value-icon">🎯</div>
+                <h3>Целеустремленность</h3>
+                <p>Мы помогаем нашим ученикам достигать поставленных целей и превосходить их</p>
             </div>
-            <div style="text-align: center; padding: 40px 30px; background: white; border-radius: 15px;">
-                <div style="width: 80px; height: 80px; background: #8B1E3F; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">📈</div>
-                <h3 style="color: #8B1E3F; margin-bottom: 15px;">Развитие</h3>
-                <p style="color: #666;">Постоянное развитие и совершенствование навыков для достижения новых высот</p>
+            <div class="value-item">
+                <div class="value-icon">📈</div>
+                <h3>Развитие</h3>
+                <p>Постоянное развитие и совершенствование навыков для достижения новых высот</p>
             </div>
         </div>
     </div>
 
     <!-- ПРЕПОДАВАТЕЛИ -->
-    <div style="padding: 80px 5%; background: white;">
-        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Наши преподаватели</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #666;">Команда профессионалов с многолетним опытом преподавания и выступлений на международных соревнованиях</p>
+    <div class="teachers-section">
+        <h2 class="teachers-title">Наши преподаватели</h2>
+        <p class="teachers-subtitle">Команда профессионалов с многолетним опытом преподавания и выступлений на международных соревнованиях</p>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+        <div class="teachers-grid">
             <!-- Анна -->
-            <div style="background: #F9F6F2; border-radius: 15px; overflow: hidden;">
-                <img src="images/teacher-anna.jpg" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                <div style="padding: 20px;">
-                    <h3 style="color: #8B1E3F; margin-bottom: 5px;">Анна Петрова</h3>
-                    <div style="color: #C6A43F; font-weight: 600; margin-bottom: 10px;">Мастер спорта международного класса</div>
-                    <div style="color: #666; margin-bottom: 5px;">Специализация: Европейская программа</div>
-                    <div style="color: #999;">Опыт: 20 лет</div>
+            <div class="teacher-card">
+                <img src="images/teacher-anna.jpg" class="teacher-photo" alt="Анна Петрова">
+                <div class="teacher-info">
+                    <h3>Анна Петрова</h3>
+                    <div class="teacher-title">Мастер спорта международного класса</div>
+                    <div class="teacher-specialty">Специализация: Европейская программа</div>
+                    <div class="teacher-experience">Опыт: 20 лет</div>
                 </div>
             </div>
             <!-- Дмитрий -->
-            <div style="background: #F9F6F2; border-radius: 15px; overflow: hidden;">
-                <img src="images/teacher-dmitry.jpg" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                <div style="padding: 20px;">
-                    <h3 style="color: #8B1E3F; margin-bottom: 5px;">Дмитрий Соколов</h3>
-                    <div style="color: #C6A43F; font-weight: 600; margin-bottom: 10px;">Заслуженный тренер России</div>
-                    <div style="color: #666; margin-bottom: 5px;">Специализация: Латиноамериканская программа</div>
-                    <div style="color: #999;">Опыт: 18 лет</div>
+            <div class="teacher-card">
+                <img src="images/teacher-dmitry.jpg" class="teacher-photo" alt="Дмитрий Соколов">
+                <div class="teacher-info">
+                    <h3>Дмитрий Соколов</h3>
+                    <div class="teacher-title">Заслуженный тренер России</div>
+                    <div class="teacher-specialty">Специализация: Латиноамериканская программа</div>
+                    <div class="teacher-experience">Опыт: 18 лет</div>
                 </div>
             </div>
             <!-- Елена -->
-            <div style="background: #F9F6F2; border-radius: 15px; overflow: hidden;">
-                <img src="images/teacher-elena.jpg" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                <div style="padding: 20px;">
-                    <h3 style="color: #8B1E3F; margin-bottom: 5px;">Елена Волкова</h3>
-                    <div style="color: #C6A43F; font-weight: 600; margin-bottom: 10px;">Мастер спорта России</div>
-                    <div style="color: #666; margin-bottom: 5px;">Специализация: Детские группы</div>
-                    <div style="color: #999;">Опыт: 15 лет</div>
+            <div class="teacher-card">
+                <img src="images/teacher-elena.jpg" class="teacher-photo" alt="Елена Волкова">
+                <div class="teacher-info">
+                    <h3>Елена Волкова</h3>
+                    <div class="teacher-title">Мастер спорта России</div>
+                    <div class="teacher-specialty">Специализация: Детские группы</div>
+                    <div class="teacher-experience">Опыт: 15 лет</div>
                 </div>
             </div>
             <!-- Александр -->
-            <div style="background: #F9F6F2; border-radius: 15px; overflow: hidden;">
-                <img src="images/teacher-alexander.jpg" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                <div style="padding: 20px;">
-                    <h3 style="color: #8B1E3F; margin-bottom: 5px;">Александр Белов</h3>
-                    <div style="color: #C6A43F; font-weight: 600; margin-bottom: 10px;">Мастер спорта России</div>
-                    <div style="color: #666; margin-bottom: 5px;">Специализация: Взрослые группы</div>
-                    <div style="color: #999;">Опыт: 12 лет</div>
+            <div class="teacher-card">
+                <img src="images/teacher-alexander.jpg" class="teacher-photo" alt="Александр Белов">
+                <div class="teacher-info">
+                    <h3>Александр Белов</h3>
+                    <div class="teacher-title">Мастер спорта России</div>
+                    <div class="teacher-specialty">Специализация: Взрослые группы</div>
+                    <div class="teacher-experience">Опыт: 12 лет</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- СТАТИСТИКА -->
-    <div style="padding: 60px 5%; background: linear-gradient(135deg, #8B1E3F 0%, #62162c 100%); color: white;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; text-align: center;">
+    <div class="stats-section">
+        <div class="stats-grid">
             <div>
-                <div style="font-size: 3.5rem; font-weight: 700; font-family: 'Oswald', sans-serif; color: #C6A43F; margin-bottom: 10px;">500+</div>
-                <div style="font-size: 1.1rem;">Выпускников</div>
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Выпускников</div>
             </div>
             <div>
-                <div style="font-size: 3.5rem; font-weight: 700; font-family: 'Oswald', sans-serif; color: #C6A43F; margin-bottom: 10px;">150+</div>
-                <div style="font-size: 1.1rem;">Побед на соревнованиях</div>
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Побед на соревнованиях</div>
             </div>
             <div>
-                <div style="font-size: 3.5rem; font-weight: 700; font-family: 'Oswald', sans-serif; color: #C6A43F; margin-bottom: 10px;">15</div>
-                <div style="font-size: 1.1rem;">Лет опыта</div>
+                <div class="stat-number">15</div>
+                <div class="stat-label">Лет опыта</div>
             </div>
             <div>
-                <div style="font-size: 3.5rem; font-weight: 700; font-family: 'Oswald', sans-serif; color: #C6A43F; margin-bottom: 10px;">20+</div>
-                <div style="font-size: 1.1rem;">Преподавателей</div>
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Преподавателей</div>
             </div>
         </div>
     </div>
 
     <!-- ПОДВАЛ -->
-    <footer style="background: #2C1810; color: white; padding: 60px 5% 20px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1400px; margin: 0 auto;">
-            <div>
-                <h3 style="color: #C6A43F; margin-bottom: 1rem;">Школа бальных танцев «Грация»</h3>
-                <p style="color: #ddd;">Профессиональное обучение бальным танцам для детей и взрослых</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Школа бальных танцев «Грация»</h3>
+                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
             </div>
-            <div>
-                <h4 style="color: #C6A43F; margin-bottom: 1rem;">Контакты</h4>
-                <p style="color: #ddd;">Телефон: +7 (495) 123-45-67</p>
-                <p style="color: #ddd;">Email: info@gracia-dance.ru</p>
-                <p style="color: #ddd;">Адрес: г. Москва, ул. Танцевальная, д. 5</p>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@gracia-dance.ru</p>
+                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
             </div>
-            <div>
-                <h4 style="color: #C6A43F; margin-bottom: 1rem;">Режим работы</h4>
-                <p style="color: #ddd;">Пн-Пт: 10:00 - 22:00</p>
-                <p style="color: #ddd;">Сб-Вс: 10:00 - 20:00</p>
+            <div class="footer-schedule">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa;">
+        <div class="footer-bottom">
             <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
         </div>
     </footer>
+    
     <script>
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('nav');

@@ -7,28 +7,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
-    <button class="burger-menu" aria-label="Открыть меню">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="programs.html">Программы</a></li>
-            <li><a href="schedule.html">Расписание</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-    </nav>
-    <div class="nav-overlay"></div>
-</header>
+    <header>
+        <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
+        <button class="burger-menu" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="programs.html">Программы</a></li>
+                <li><a href="schedule.html">Расписание</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="nav-overlay"></div>
+    </header>
 
     <!-- ИСТОРИЯ С КАРТИНКОЙ -->
     <div style="padding: 120px 5% 50px; max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
             <div>
                 <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #2C1810;">О нашей школе</h2>
                 <p style="font-size: 1.2rem; color: #8B1E3F; font-weight: 600; margin-bottom: 20px;">15 лет профессионального обучения бальным танцам</p>
@@ -75,7 +75,7 @@
         <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Наши преподаватели</h2>
         <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #666;">Команда профессионалов с многолетним опытом преподавания и выступлений на международных соревнованиях</p>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
             <!-- Анна -->
             <div style="background: #F9F6F2; border-radius: 15px; overflow: hidden;">
                 <img src="images/teacher-anna.jpg" style="width: 100%; height: 300px; object-fit: cover; display: block;">
@@ -121,7 +121,7 @@
 
     <!-- СТАТИСТИКА -->
     <div style="padding: 60px 5%; background: linear-gradient(135deg, #8B1E3F 0%, #62162c 100%); color: white;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; text-align: center;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; text-align: center;">
             <div>
                 <div style="font-size: 3.5rem; font-weight: 700; font-family: 'Oswald', sans-serif; color: #C6A43F; margin-bottom: 10px;">500+</div>
                 <div style="font-size: 1.1rem;">Выпускников</div>
@@ -143,7 +143,7 @@
 
     <!-- ПОДВАЛ -->
     <footer style="background: #2C1810; color: white; padding: 60px 5% 20px;">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; max-width: 1400px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1400px; margin: 0 auto;">
             <div>
                 <h3 style="color: #C6A43F; margin-bottom: 1rem;">Школа бальных танцев «Грация»</h3>
                 <p style="color: #ddd;">Профессиональное обучение бальным танцам для детей и взрослых</p>
@@ -165,7 +165,6 @@
         </div>
     </footer>
     <script>
-    // Мобильное меню
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('nav');
     const overlay = document.querySelector('.nav-overlay');

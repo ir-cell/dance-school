@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание | Грация</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ГЕРОЙ */
+.schedule-hero {
+    height: 30vh;
+    background: #2C1810;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    margin-top: 80px;
+}
+        .schedule-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .schedule-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .schedule-content {
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ИНФО БЛОК */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #C6A43F;
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            color: #8B1E3F;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* ВКЛАДКИ ДНЕЙ */
+        .days-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .day-tab {
+            padding: 12px 25px;
+            background: #F9F6F2;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .day-tab:hover {
+            background: #8B1E3F;
+            color: white;
+        }
+
+        .day-tab.active {
+            background: #8B1E3F;
+            color: white;
+            border-color: #C6A43F;
+        }
+
+        /* РАСПИСАНИЕ */
+        .schedule-table {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 60px;
+        }
+
+        .schedule-day {
+            display: none;
+        }
+
+        .schedule-day.active {
+            display: block;
+        }
+
+        .schedule-day h2 {
+            color: #8B1E3F;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 140px 1fr 200px 100px;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-item > * {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(139, 30, 63, 0.1);
+        }
+
+        .schedule-item:hover > * {
+            overflow: visible;
+            white-space: normal;
+            background: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .schedule-time {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #8B1E3F;
+            white-space: nowrap;
+            width: 140px;
+            display: inline-block;
+        }
+
+        .schedule-class {
+            font-weight: 600;
+            color: #2C1810;
+        }
+
+        .schedule-trainer {
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .schedule-room {
+            background: #C6A43F;
+            color: #2C1810;
+            padding: 5px 10px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .info-note {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .info-note p {
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-note strong {
+            color: #8B1E3F;
+        }
+
+        /* АДАПТАЦИЯ */
+        @media (max-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .schedule-item {
+                grid-template-columns: 120px 1fr 150px 80px;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .schedule-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .schedule-item > * {
+                white-space: normal;
+                overflow: visible;
+            }
+
+            .schedule-item:hover {
+                transform: none;
+            }
+
+            .schedule-time {
+                font-size: 1.1rem;
+                width: auto;
+            }
+
+            .schedule-room {
+                width: fit-content;
+                margin: 0 auto;
+            }
+
+            .days-tabs {
+                gap: 10px;
+            }
+
+            .day-tab {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
+    <button class="burger-menu" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="programs.html">Программы</a></li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="nav-overlay"></div>
+</header>
+    <section class="schedule-hero">
+        <h1>Расписание занятий</h1>
+        <p>Выберите удобное для вас время. Занятия проходят 7 дней в неделю</p>
+    </section>
+
+    <div class="schedule-content">
+        <!-- ИНФО БЛОК -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">⏰</div>
+                <h3>Режим работы</h3>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🏛️</div>
+                <h3>Залы</h3>
+                <p>Зал №1 - 120 м²</p>
+                <p>Зал №2 - 80 м²</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📌</div>
+                <h3>Важно знать</h3>
+                <p>Приходите за 10 минут до начала</p>
+                <p>Пропуски можно отработать</p>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКИ ДНЕЙ -->
+        <div class="days-tabs">
+            <button class="day-tab active" data-day="mon">Пн</button>
+            <button class="day-tab" data-day="tue">Вт</button>
+            <button class="day-tab" data-day="wed">Ср</button>
+            <button class="day-tab" data-day="thu">Чт</button>
+            <button class="day-tab" data-day="fri">Пт</button>
+            <button class="day-tab" data-day="sat">Сб</button>
+            <button class="day-tab" data-day="sun">Вс</button>
+        </div>
+
+        <!-- РАСПИСАНИЕ -->
+        <div class="schedule-table">
+            <!-- ПОНЕДЕЛЬНИК -->
+            <div class="schedule-day active" id="mon">
+                <h2>Понедельник</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">10:00 - 11:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:00 - 17:00</span>
+                    <span class="schedule-class">Младшая группа (8-12 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">17:30 - 19:00</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👨 Дмитрий Соколов</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">19:30 - 21:00</span>
+                    <span class="schedule-class">Взрослая группа</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+            </div>
+
+            <!-- ВТОРНИК -->
+            <div class="schedule-day" id="tue">
+                <h2>Вторник</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">15:00 - 16:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:30 - 18:00</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">18:30 - 20:00</span>
+                    <span class="schedule-class">Взрослая группа</span>
+                    <span class="schedule-trainer">👨 Александр Белов</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">20:30 - 21:30</span>
+                    <span class="schedule-class">Индивидуальные занятия</span>
+                    <span class="schedule-trainer">📅 По записи</span>
+                    <span class="schedule-room">Зал №1,2</span>
+                </div>
+            </div>
+
+            <!-- СРЕДА -->
+            <div class="schedule-day" id="wed">
+                <h2>Среда</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">10:00 - 11:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:00 - 17:00</span>
+                    <span class="schedule-class">Младшая группа (8-12 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">17:30 - 19:00</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👨 Дмитрий Соколов</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">19:30 - 21:00</span>
+                    <span class="schedule-class">Взрослая группа</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+            </div>
+
+            <!-- ЧЕТВЕРГ -->
+            <div class="schedule-day" id="thu">
+                <h2>Четверг</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">15:00 - 16:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:30 - 18:00</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">18:30 - 20:00</span>
+                    <span class="schedule-class">Взрослая группа</span>
+                    <span class="schedule-trainer">👨 Александр Белов</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">20:30 - 21:30</span>
+                    <span class="schedule-class">Свадебные танцы</span>
+                    <span class="schedule-trainer">📅 По записи</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+            </div>
+
+            <!-- ПЯТНИЦА -->
+            <div class="schedule-day" id="fri">
+                <h2>Пятница</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">10:00 - 11:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:00 - 17:00</span>
+                    <span class="schedule-class">Младшая группа (8-12 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">17:30 - 19:00</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👨 Дмитрий Соколов</span>
+                    <span class="schedule-room">Зал №2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">19:30 - 21:30</span>
+                    <span class="schedule-class">Взрослая группа + практика</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+            </div>
+
+            <!-- СУББОТА -->
+            <div class="schedule-day" id="sat">
+                <h2>Суббота</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">10:00 - 11:30</span>
+                    <span class="schedule-class">Младшая группа (8-12 лет)</span>
+                    <span class="schedule-trainer">👨 Дмитрий Соколов</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">12:00 - 13:30</span>
+                    <span class="schedule-class">Средняя группа (13-16 лет)</span>
+                    <span class="schedule-trainer">👩 Анна Петрова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">14:00 - 16:00</span>
+                    <span class="schedule-class">Индивидуальные занятия</span>
+                    <span class="schedule-trainer">📅 По записи</span>
+                    <span class="schedule-room">Зал №1,2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">16:30 - 18:00</span>
+                    <span class="schedule-class">Взрослая группа</span>
+                    <span class="schedule-trainer">👨 Александр Белов</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+            </div>
+
+            <!-- ВОСКРЕСЕНЬЕ -->
+            <div class="schedule-day" id="sun">
+                <h2>Воскресенье</h2>
+                <div class="schedule-item">
+                    <span class="schedule-time">11:00 - 12:00</span>
+                    <span class="schedule-class">Детская группа (4-7 лет)</span>
+                    <span class="schedule-trainer">👩 Елена Волкова</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">12:30 - 14:00</span>
+                    <span class="schedule-class">Открытая практика</span>
+                    <span class="schedule-trainer">🎵 Свободная</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">14:30 - 16:30</span>
+                    <span class="schedule-class">Индивидуальные занятия</span>
+                    <span class="schedule-trainer">📅 По записи</span>
+                    <span class="schedule-room">Зал №1,2</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">17:00 - 18:30</span>
+                    <span class="schedule-class">Мастер-классы</span>
+                    <span class="schedule-trainer">🎓 Приглашенные тренеры</span>
+                    <span class="schedule-room">Зал №1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФА -->
+        <div class="info-note">
+            <p><strong>🎯 Индивидуальные занятия</strong> - по предварительной записи. Стоимость от 2000 ₽</p>
+            <p><strong>💒 Свадебные танцы</strong> - постановка индивидуального танца. 2500 ₽/занятие</p>
+            <p><strong>🎓 Мастер-классы</strong> - каждое воскресенье в 17:00. По предварительной записи</p>
+            <p><strong>🕺 Открытая практика</strong> - для всех учеников школы. Свободное танцевание</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Школа бальных танцев «Грация»</h3>
+                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@gracia-dance.ru</p>
+                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
+            </div>
+            <div class="footer-schedule">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Переключение дней
+        document.querySelectorAll('.day-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Убираем активный класс у всех вкладок
+                document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+                // Добавляем активный класс текущей вкладке
+                this.classList.add('active');
+                
+                // Убираем активный класс у всех дней
+                document.querySelectorAll('.schedule-day').forEach(day => day.classList.remove('active'));
+                // Показываем выбранный день
+                const dayId = this.getAttribute('data-day');
+                document.getElementById(dayId).classList.add('active');
+            });
+        });
+    </script>
+    <script>
+    // Мобильное меню
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    if (burger && nav && overlay) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            nav.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            nav.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (nav.classList.contains('open')) {
+                    burger.classList.remove('active');
+                    nav.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>

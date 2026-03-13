@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программы | Грация</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .programs-hero {
+            height: 30vh;
+            background: #2C1810;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        .programs-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .programs-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            opacity: 0.9;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .programs-content {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: #8B1E3F;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+            padding: 0 15px;
+        }
+
+        .program-item {
+            background: #F9F6F2;
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .program-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #C6A43F;
+        }
+
+        .program-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 30, 63, 0.15);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .program-item h3 {
+            font-size: 1.8rem;
+            color: #8B1E3F;
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .program-item .age {
+            display: inline-block;
+            background: #C6A43F;
+            color: #2C1810;
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .program-item p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex: 1 0 auto;
+        }
+
+        .program-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .program-details span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        .program-details small {
+            color: #999;
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
+        .program-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8B1E3F;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 20px;
+        }
+
+        .program-price small {
+            font-size: 1rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .program-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #8B1E3F;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #8B1E3F;
+            width: 100%;
+            text-align: center;
+        }
+
+        .program-btn:hover {
+            background: transparent;
+            color: #8B1E3F;
+        }
+
+        .dance-section {
+            background: #F9F6F2;
+            padding: 80px 5%;
+            border-radius: 30px;
+            margin-top: 40px;
+        }
+
+        .dance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .dance-block {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .dance-block h3 {
+            font-size: 2rem;
+            color: #8B1E3F;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dance-list {
+            list-style: none;
+        }
+
+        .dance-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dance-list li:last-child {
+            border-bottom: none;
+        }
+
+        .dance-name {
+            font-weight: 600;
+            color: #2C1810;
+            font-size: 1.1rem;
+        }
+
+        .dance-desc {
+            color: #666;
+            font-style: italic;
+        }
+
+        .cta-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #8B1E3F, #62162c);
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            margin: 80px 5%;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #8B1E3F;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 768px) {
+            .programs-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .programs-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            
+            .programs-content {
+                padding: 40px 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+            
+            .program-item {
+                padding: 30px 20px;
+            }
+            
+            .program-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            .program-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .program-details span {
+                width: 100%;
+            }
+            
+            .program-price {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            
+            .dance-section {
+                padding: 40px 15px;
+            }
+            
+            .dance-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .dance-block {
+                padding: 25px 15px;
+            }
+            
+            .dance-block h3 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+            
+            .dance-list li {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+                padding: 10px 0;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+                margin: 40px 15px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section p {
+                font-size: 1rem;
+            }
+            
+            .cta-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .programs-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .program-icon {
+                font-size: 2.5rem;
+            }
+            
+            .program-item .age {
+                font-size: 0.8rem;
+                padding: 4px 12px;
+            }
+            
+            .dance-block {
+                padding: 20px 12px;
+            }
+            
+            .dance-name {
+                font-size: 1rem;
+            }
+            
+            .dance-desc {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none;"><div class="logo">Грация</div></a>
+        <button class="burger-menu" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="programs.html">Программы</a></li>
+                <li><a href="schedule.html">Расписание</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="nav-overlay"></div>
+    </header>
+
+    <section class="programs-hero">
+        <h1>Программы обучения</h1>
+        <p>Каждый найдет танец по душе</p>
+    </section>
+
+    <div class="programs-content">
+        <div class="section-title">
+            <h2>Групповые занятия</h2>
+            <p>Танцуйте в компании единомышленников</p>
+        </div>
+
+        <div class="programs-grid">
+            <div class="program-item">
+                <div class="program-icon">👶</div>
+                <h3>Детская группа</h3>
+                <div class="age">4-7 лет</div>
+                <p>Первые шаги в мире танца. Развиваем координацию, музыкальность и любовь к движению в игровой форме.</p>
+                <div class="program-details">
+                    <span>45 мин <small>длительность</small></span>
+                    <span>8-10 чел <small>группа</small></span>
+                </div>
+                <div class="program-price">3 000 ₽<small>/мес</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+
+            <div class="program-item">
+                <div class="program-icon">🧒</div>
+                <h3>Младшая группа</h3>
+                <div class="age">8-12 лет</div>
+                <p>Изучение базовых фигур европейской и латиноамериканской программы. Подготовка к первым соревнованиям.</p>
+                <div class="program-details">
+                    <span>60 мин <small>длительность</small></span>
+                    <span>6-8 чел <small>группа</small></span>
+                </div>
+                <div class="program-price">4 500 ₽<small>/мес</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+
+            <div class="program-item">
+                <div class="program-icon">👩‍🎤</div>
+                <h3>Средняя группа</h3>
+                <div class="age">13-16 лет</div>
+                <p>Углубленная техника, сложные вариации, активная соревновательная практика и подготовка к турнирам.</p>
+                <div class="program-details">
+                    <span>90 мин <small>длительность</small></span>
+                    <span>4-6 чел <small>группа</small></span>
+                </div>
+                <div class="program-price">6 000 ₽<small>/мес</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+
+            <div class="program-item">
+                <div class="program-icon">💃</div>
+                <h3>Взрослая группа</h3>
+                <div class="age">18+</div>
+                <p>Для начинающих и продолжающих. Классические программы, социальные танцы и подготовка к выступлениям.</p>
+                <div class="program-details">
+                    <span>75 мин <small>длительность</small></span>
+                    <span>6-8 пар <small>группа</small></span>
+                </div>
+                <div class="program-price">5 000 ₽<small>/мес</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+
+            <div class="program-item">
+                <div class="program-icon">💒</div>
+                <h3>Свадебный танец</h3>
+                <div class="age">Индивидуально</div>
+                <p>Постановка уникального танца под вашу музыку. Сделайте ваш первый танец незабываемым.</p>
+                <div class="program-details">
+                    <span>60 мин <small>занятие</small></span>
+                    <span>1 пара <small>группа</small></span>
+                </div>
+                <div class="program-price">2 500 ₽<small>/занятие</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+
+            <div class="program-item">
+                <div class="program-icon">⭐</div>
+                <h3>Индивидуальные</h3>
+                <div class="age">Personal</div>
+                <p>Персональная работа с тренером. Максимальная эффективность и индивидуальный подход к вашим целям.</p>
+                <div class="program-details">
+                    <span>45-60 мин <small>занятие</small></span>
+                    <span>1 чел/пара <small>группа</small></span>
+                </div>
+                <div class="program-price">от 2 000 ₽<small>/занятие</small></div>
+                <a href="contacts.html" class="program-btn">Записаться</a>
+            </div>
+        </div>
+
+        <div class="dance-section">
+            <div class="section-title">
+                <h2>Танцевальные программы</h2>
+                <p>Европейская и Латиноамериканская классика</p>
+            </div>
+
+            <div class="dance-grid">
+                <div class="dance-block">
+                    <h3>Европейская<br>программа</h3>
+                    <ul class="dance-list">
+                        <li><span class="dance-name">Медленный вальс</span> <span class="dance-desc">романтичный и плавный</span></li>
+                        <li><span class="dance-name">Танго</span> <span class="dance-desc">страстный и драматичный</span></li>
+                        <li><span class="dance-name">Венский вальс</span> <span class="dance-desc">быстрый и вихревой</span></li>
+                        <li><span class="dance-name">Фокстрот</span> <span class="dance-desc">изысканный и элегантный</span></li>
+                        <li><span class="dance-name">Квикстеп</span> <span class="dance-desc">энергичный и легкий</span></li>
+                    </ul>
+                </div>
+
+                <div class="dance-block">
+                    <h3>Латиноамериканская<br>программа</h3>
+                    <ul class="dance-list">
+                        <li><span class="dance-name">Самба</span> <span class="dance-desc">бразильский карнавал</span></li>
+                        <li><span class="dance-name">Ча-ча-ча</span> <span class="dance-desc">игривый и задорный</span></li>
+                        <li><span class="dance-name">Румба</span> <span class="dance-desc">танец любви</span></li>
+                        <li><span class="dance-name">Пасодобль</span> <span class="dance-desc">испанская коррида</span></li>
+                        <li><span class="dance-name">Джайв</span> <span class="dance-desc">быстрый свинг</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Начните танцевать сегодня</h2>
+            <p>Первое пробное занятие — бесплатно! Приходите и попробуйте</p>
+            <a href="contacts.html" class="cta-btn">Записаться на пробное</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Школа бальных танцев «Грация»</h3>
+                <p>Профессиональное обучение бальным танцам для детей и взрослых</p>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@gracia-dance.ru</p>
+                <p>Адрес: г. Москва, ул. Танцевальная, д. 5</p>
+            </div>
+            <div class="footer-schedule">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 10:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Школа бальных танцев «Грация». Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    if (burger && nav && overlay) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            nav.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            burger.classList.remove('active');
+            nav.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (nav.classList.contains('open')) {
+                    burger.classList.remove('active');
+                    nav.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>
